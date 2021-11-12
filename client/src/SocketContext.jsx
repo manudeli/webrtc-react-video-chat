@@ -12,7 +12,7 @@ const SocketContext = createContext()
 
 const useSocketContext = () => useContext(SocketContext)
 
-const socket = io('http://localhost:5000')
+const socket = io(process.env.REACT_APP_SOCKET_END_POINT)
 
 const ContextProvider = ({ children }) => {
   const [stream, setStream] = useState(null)
@@ -87,7 +87,7 @@ const ContextProvider = ({ children }) => {
   const leaveCall = () => {
     setCallEnded(true)
 
-    connectionRef.current.destory()
+    // connectionRef.current.destory()
 
     window.location.reload()
   }
